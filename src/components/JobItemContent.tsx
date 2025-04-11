@@ -4,7 +4,7 @@ import Spinner from "./Spinner";
 
 export default function JobItemContent() {
   const activeId = useActiveId();
-  const [jobItem, isLoading] = useJobItem(activeId);
+  const { jobItem, isLoading } = useJobItem(activeId);
 
   if (isLoading) return <LoadingJobContent />;
 
@@ -62,8 +62,8 @@ export default function JobItemContent() {
                 </p>
               </div>
               <ul className="qualifications__list">
-                {jobItem.qualifications?.map((qualification, index) => (
-                  <li className="qualifications__item" key={index}>
+                {jobItem.qualifications?.map((qualification: string) => (
+                  <li className="qualifications__item" key={qualification}>
                     {qualification}
                   </li>
                 ))}
@@ -78,9 +78,9 @@ export default function JobItemContent() {
                 </p>
               </div>
               <ul className="reviews__list">
-                {jobItem.qualifications?.map((qualification, index) => (
-                  <li className="reviews__item" key={index}>
-                    {qualification}
+                {jobItem.qualifications?.map((review: string) => (
+                  <li className="reviews__item" key={review}>
+                    {review}
                   </li>
                 ))}
               </ul>
